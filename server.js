@@ -21,18 +21,27 @@ app.get('/api/notes', (req,res) => res.json(eNotes));
 
 // POST route for saving notes
 app.post('/api/notes', (req,res) =>{
+// log that POST request was reveived
+    console.info(`${req.method} request received to add a note`)
+    const { title, text } = req.body;
 
-    const { id, title, text } = req.body;
-
-    if(id && title && text){
+    if(title && text){
         const newNote = {
             title,
             text,
             id: uuid(),
-
         };
+
+        const response = {
+            status: 'success',
+            body: newNote,
+        };
+        console.log(response);
+        res.status(201).json(response);
+    } else {
+        res.status(500).json('Error in posting new note');
     }
-}
+});
 
 // GET route for all existing notes
 // app.get('/notes/existing', (req, res)=> res.json(eNotes));

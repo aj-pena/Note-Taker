@@ -7,13 +7,18 @@ const PORT = 3001;
 
 app.use(express.static('public'));
 
+// Setting Express app to handle data parsing
+app.use(express.urlencoded({extended:true}));
+app.use(express.json());
+
+// GET route for rendering notes.html (page 2)
 app.get('/notes', (req,res) => 
     res.sendFile(path.join(_dirname,'public/notes.html'))
 );
 // GET route for all existing notes
 app.get('/notes/existing', (req, res)=> res.json(eNotes));
 
-// GET route for specific note
+// GET route for specific existing note
 app.get('/notes/existing/:title', (req, res)=>{
     const requestedNote = req.params.title.toLocaleLowerCase();
     // iterate through notes to look for requested title

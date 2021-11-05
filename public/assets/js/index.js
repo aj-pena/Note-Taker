@@ -4,6 +4,7 @@ let saveNoteBtn;
 let newNoteBtn;
 let noteList;
 
+// Q: Wouldn't the pathname be /notes.html?
 if (window.location.pathname === '/notes') {
   noteTitle = document.querySelector('.note-title');
   noteText = document.querySelector('.note-textarea');
@@ -25,13 +26,17 @@ const hide = (elem) => {
 // activeNote is used to keep track of the note in the textarea
 let activeNote = {};
 
-const getNotes = () =>
-  fetch('/api/notes', {
+// Gets existing notes. Q: should I use /notes instead?
+const getNotes = async () =>{
+  const result = await fetch('/api/notes', {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
     },
   });
+  const json = await result.json();
+  return json;
+};
 
 const saveNote = (note) =>
   fetch('/api/notes', {

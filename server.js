@@ -1,6 +1,7 @@
 const express = require('express');
 const path = require('path');
 const eNotes = require('./db/db.json');
+const uuid = require('./helpers/uuid');
 
 const app = express();
 const PORT = 3001;
@@ -13,10 +14,28 @@ app.use(express.json());
 
 // GET route for rendering notes.html (page 2)
 app.get('/notes', (req,res) => 
-    res.sendFile(path.join(_dirname,'public/notes.html'))
+    res.sendFile(path.join(__dirname,'public/notes.html'))
 );
+// GET route for retrieving existing notes
+app.get('/api/notes', (req,res) => res.json(eNotes));
+
+// POST route for saving notes
+app.post('/api/notes', (req,res) =>{
+
+    const { id, title, text } = req.body;
+
+    if(id && title && text){
+        const newNote = {
+            title,
+            text,
+            id: uuid(),
+
+        };
+    }
+}
+
 // GET route for all existing notes
-app.get('/notes/existing', (req, res)=> res.json(eNotes));
+// app.get('/notes/existing', (req, res)=> res.json(eNotes));
 
 // GET route for specific existing note
 app.get('/notes/existing/:title', (req, res)=>{

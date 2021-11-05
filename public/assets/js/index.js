@@ -27,15 +27,14 @@ const hide = (elem) => {
 let activeNote = {};
 
 // Gets existing notes. Q: should I use /notes instead?
-const getNotes = async () =>{
-  const result = await fetch('/api/notes', {
+const getNotes = () =>{
+  return fetch('/api/notes', {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
     },
   });
-  const json = await result.json();
-  return json;
+  
 };
 
 const saveNote = (note) =>

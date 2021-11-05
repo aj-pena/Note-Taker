@@ -1,6 +1,19 @@
 [
     {
-        "title":"Test Title",
-        "text":"Test text"
+        "title":"Call bank on Friday",
+        "text":"Call 2:00 pm to discuss new card delivery"
+    },
+    {
+        "title":"Reschedule delivery",
+        "text":"email good foods to reschedule next week's box delivery"
+    },
+    {
+        "title":"Finish assignment",
+        "text":"Finish the e-commerce and portfolio assignments"
+    },
+    {
+        "title":"Client lunch on Thursday",
+        "text":"Lunch 1 pm with Adam from Roofers ltd"
     }
+
 ]

@@ -33,8 +33,18 @@ app.post('/api/notes', (req,res) =>{
             id: uuid(),
         };
         // stringifying data
-        const newNoteString = JSON.stringify(newNote);
         
+        
+        //reading file
+        let dbData = fs.readFile(fileName, encoding, function (err,data){
+            return data;
+          });
+        
+        const parsedData = JSON.parse(dbData);
+        parsedData.push(newNote);
+
+        const newNoteString = JSON.stringify(parsedData);
+
         // write string to a file
         fs.writeFile(`./db/db.json`, newNoteString, (err) =>
             err ? console.error(err) : console.log(

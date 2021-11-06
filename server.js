@@ -2,6 +2,7 @@ const express = require('express');
 const path = require('path');
 const eNotes = require('./db/db.json');
 const uuid = require('./helpers/uuid');
+const fs = require('fs');
 
 const app = express();
 const PORT = 3001;
@@ -31,6 +32,15 @@ app.post('/api/notes', (req,res) =>{
             text,
             id: uuid(),
         };
+        // stringifying data
+        const newNoteString = JSON.stringify(newNote);
+        
+        // write string to a file
+        fs.writeFile(`./db/db.json`, newNoteString, (err) =>
+            err ? console.error(err) : console.log(
+                `New note for ${newNote.title} has been written to JSON file`
+            )
+        );
 
         const response = {
             status: 'success',

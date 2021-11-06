@@ -27,7 +27,7 @@ No installation is required as this application is run from Heroku.
 ## Usage
 
 This application is deployed in Heroku.
-[Visit deployed page](https://note-taker-ajp.herokuapp.com/)
+[Visit Heroku deployed page](https://note-taker-ajp.herokuapp.com/)
 
 Click on the start button at the homepage to start the note-taker application.
 Select an existing note to open and edit, click on the bin icon to delete it or click on the '+' icon in the upper right corner to create a new note. 

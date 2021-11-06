@@ -19,8 +19,11 @@ app.get('/notes', (req,res) =>
     res.sendFile(path.join(__dirname,'public/notes.html'))
 );
 // GET route for retrieving existing notes
-app.get('/api/notes', (req,res) => res.json(eNotes));
-
+app.get('/api/notes', (req,res) => {
+    let dbNotes = fs.readFileSync('./db/db.json','utf8');
+    let parsedNotes = JSON.parse(dbNotes);
+    res.json(parsedNotes);
+});
 // POST route for saving notes
 app.post('/api/notes', (req,res) =>{
     console.log(req.body);

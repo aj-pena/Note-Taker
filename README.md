@@ -2,10 +2,11 @@
 
 ## Description
 
-This application allows the user to schedule events for a 5 day time frame. It contains slots for every work-day hour that can be used to store event names.
-The times-slots are color-coded to represent past, present and future time-slots.
+This application is deployed in Heroku and it allows the user to save notes that can then be read, edited
+or deleted. It will help the user keep track of tasks, events and thoughts. 
 
-With this application I expect to learn to use the MomentJs date and time library, Jquery and Bootstrapp.
+With this application I expect to learn to use the NodeJs and the ExpressJs runtime environment to simulate
+requests to the server from a client-browser.
 
 
 ## Table of Contents
@@ -36,9 +37,8 @@ Select an existing note to open and edit, click on the bin icon to delete it or 
 
 ## Credits
 
-- [ExpressJs](https://momentjs.com/docs/)
-- [Bootstrap](https://getbootstrap.com/)
-- [JQuery](https://jquery.com/)
+- [ExpressJs](https://expressjs.com/)
+- [NodeJs](https://nodejs.org/en/)
 - [w3schools](https://www.w3schools.com/)
 - [StackOverflow](https://stackoverflow.com/)
 - [Mozilla Developer Network](https://developer.mozilla.org/en-US/)
@@ -50,6 +50,7 @@ Select an existing note to open and edit, click on the bin icon to delete it or 
 
 ## Features
 
-- MomentJs
+- NodeJs
+- ExpressJs
 - Bootstrap
-- JQuery
+- Fontawesome

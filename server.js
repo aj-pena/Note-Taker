@@ -22,6 +22,7 @@ app.get('/api/notes', (req,res) => res.json(eNotes));
 
 // POST route for saving notes
 app.post('/api/notes', (req,res) =>{
+    console.log(req.body);
 // log that POST request was reveived
     console.info(`${req.method} request received to add a note`)
     const { title, text } = req.body;
@@ -36,10 +37,12 @@ app.post('/api/notes', (req,res) =>{
         
         
         //reading file
-        let dbData = fs.readFile(fileName, encoding, function (err,data){
+        let dbData = fs.readFileSync('./db/db.json','utf8', function (err,data){
+           console.log(data);
             return data;
-          });
         
+          });
+        console.log('dbData:',dbData);
         const parsedData = JSON.parse(dbData);
         parsedData.push(newNote);
           // stringifying data

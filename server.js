@@ -66,7 +66,16 @@ app.post('/api/notes', (req,res) =>{
     }
 });
 // DELETE route for specific note
-app.delete('/api/notes/:id',(req,res) => res.json(`DELETE route`));
+app.delete('/api/notes/:id',(req,res) =>{
+    // iterate through notes to look for id
+    for(let i=0;i<eNotes.length;i++){
+        if(req.params.id === eNotes[i].id){
+            eNotes.splice(i,1);
+        }
+    }
+    // if requested title not found
+    return res.json('Note not found: not possible to erase');    
+});
 
 // GET route for all existing notes
 // app.get('/notes/existing', (req, res)=> res.json(eNotes));

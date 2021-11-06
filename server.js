@@ -54,7 +54,7 @@ app.post('/api/notes', (req,res) =>{
                 `New note for ${newNote.title} has been written to JSON file`
             )
         );
-
+        
         const response = {
             status: 'success',
             body: newNote,
@@ -71,10 +71,18 @@ app.delete('/api/notes/:id',(req,res) =>{
     for(let i=0;i<eNotes.length;i++){
         if(req.params.id === eNotes[i].id){
             eNotes.splice(i,1);
+            const newNoteString = JSON.stringify(eNotes);
+            fs.writeFile('./db/db.json', newNoteString, (err) =>
+            err ? console.error(err) : console.log(
+                `Note with id ${req.params.id} has been deleted from JSON file`
+            )
+        );
         }
+        
+        
     }
-    // if requested title not found
-    return res.json('Note not found: not possible to erase');    
+    // if requested id not found
+    return res.json('Note not found: not possible to erase');   
 });
 
 // GET route for all existing notes
@@ -95,9 +103,7 @@ app.get('/notes/existing/:title', (req, res)=>{
 
 // Fallback route
 app.get('*', (req, res)=>
-     res.send(
-        `Make a GET request to <a href="http://localhost:${PORT}/notes/existing">http://localhost:${PORT}/notes/existing</a>`
-    )
+res.sendFile(path.join(__dirname,'public/index.html'))
 );
 
 

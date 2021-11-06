@@ -65,6 +65,8 @@ app.post('/api/notes', (req,res) =>{
         res.status(500).json('Error in posting new note');
     }
 });
+// DELETE route for specific note
+app.delete('/api/notes/:id',(req,res) => res.json(`DELETE route`));
 
 // GET route for all existing notes
 // app.get('/notes/existing', (req, res)=> res.json(eNotes));

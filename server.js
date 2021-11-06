@@ -5,7 +5,8 @@ const uuid = require('./helpers/uuid');
 const fs = require('fs');
 
 const app = express();
-const PORT = 3001;
+// Environment variable for heroku
+const PORT = process.env.PORT || 3001;
 
 app.use(express.static('public'));
 

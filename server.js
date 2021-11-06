@@ -32,7 +32,7 @@ app.post('/api/notes', (req,res) =>{
             text,
             id: uuid(),
         };
-        // stringifying data
+        
         
         
         //reading file
@@ -42,11 +42,11 @@ app.post('/api/notes', (req,res) =>{
         
         const parsedData = JSON.parse(dbData);
         parsedData.push(newNote);
-
+          // stringifying data
         const newNoteString = JSON.stringify(parsedData);
 
         // write string to a file
-        fs.writeFile(`./db/db.json`, newNoteString, (err) =>
+        fs.writeFile('./db/db.json', newNoteString, (err) =>
             err ? console.error(err) : console.log(
                 `New note for ${newNote.title} has been written to JSON file`
             )
